@@ -1,9 +1,33 @@
-import example.pepita
+import bicicleta.*
 
-describe "group of tests for pepita" {
-
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
-  }
-
+describe "Test Bicicleta" {
+    const biciOlmo28 = new Bicicleta(rodado=28, largo=150,marca="Olmo",accesorios=[new Farolito()])
+    const biciLegnano26 = new Bicicleta(rodado=26, largo=110,marca="Leganano",accesorios=[new Farolito(), new Canasto(volumen=8), new Morral(largo=21, tieneOjoDeGato=true)])
+    const biciLegnano20 = new Bicicleta(rodado=20, largo=90,marca="Leganano",accesorios=[new Morral(largo=6, tieneOjoDeGato=false)])
+  test "biciOlmo28 " {
+    assert.equals(85, biciOlmo28.altura())
+    assert.equals(34, biciOlmo28.velocidadCrucero())
+    assert.equals(0, biciOlmo28.carga())
+    assert.equals(14+0.5, biciOlmo28.peso())
+    assert.that(biciOlmo28.tieneLuz())
+    assert.equals(1, biciOlmo28.accesoriosLivianos())
+    }
+    test "biciLegnano26 " {
+    assert.equals(80, biciLegnano26.altura())
+    assert.equals(28, biciLegnano26.velocidadCrucero())
+    assert.equals(23, biciLegnano26.carga())
+    assert.equals(13+0.5+0.8+1.2, biciLegnano26.peso())
+    assert.that(biciLegnano26.tieneLuz())
+    assert.equals(2, biciLegnano26.accesoriosLivianos())
+    }
+    
+    test "biciLegnano20 " {
+    assert.equals(65, biciLegnano20.altura())
+    assert.equals(22, biciLegnano20.velocidadCrucero())
+    assert.equals(2, biciLegnano20.carga())
+    assert.equals(10+1.2, biciLegnano20.peso())
+    assert.notThat(biciLegnano20.tieneLuz())
+    assert.equals(0, biciLegnano20.accesoriosLivianos())
+    }
+    
 }
